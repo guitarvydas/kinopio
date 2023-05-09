@@ -1,0 +1,119 @@
+"https://api.kinopio.club/space/dmkVzKfTh5P29JR2_epyj"
+curl "https://api.kinopio.club/space/dmkVzKfTh5P29JR2_epyj"
+(system:run-shell-command "curl \"https://api.kinopio.club/space/dmkVzKfTh5P29JR2_epyj\"" :output :stream)
+(sys:call-system-showing-output "curl \"https://api.kinopio.club/space/dmkVzKfTh5P29JR2_epyj\"")
+(with-output-to-string (xx)
+  (sys:call-system-showing-output "curl \"https://api.kinopio.club/space/dmkVzKfTh5P29JR2_epyj\"" :output-stream xx)
+  (setf *xx* xx)
+  "done")
+
+(defvar *url* "https://api.kinopio.club/space/dmkVzKfTh5P29JR2_epyj")
+(defvar *request* (dex:get *url*))
+
+
+;; sbcl
+(ql:quickload '("dexador"))
+(dex:get "https://planet.lisp.org")
+(dex:get "https://api.kinopio.club/space/dmkVzKfTh5P29JR2_epyj") ??? cert has expired
+
+(ql:quickload '("drakma"))
+(drakma:http-request "https://planet.lisp.org")
+(drakma:http-request "https://api.kinopio.club/space/dmkVzKfTh5P29JR2_epyj") ??? returns a vector of numbers
+
+;; LW
+(ql:quickload '("dexador"))
+(dex:get "https://planet.lisp.org")
+
+(ql:quickload '("drakma"))
+(drakma:http-request "https://planet.lisp.org")
+
+;;;; dex
+* (dex:get "https://planet.lisp.org")
+
+(dex:get "https://planet.lisp.org")
+
+
+debugger invoked on a CL+SSL:SSL-ERROR-VERIFY in thread
+#<THREAD "main thread" RUNNING {10013B0113}>:
+  SSL verify error: 10 X509_V_ERR_CERT_HAS_EXPIRED
+
+Type HELP for debugger help, or (SB-EXT:EXIT) to exit from SBCL.
+
+restarts (invokable by number or by possibly-abbreviated name):
+  0: [RETRY-REQUEST] Retry the same request.
+  1: [ABORT        ] Exit debugger, returning to top level.
+
+((LAMBDA (CL+SSL::OK CL+SSL::CTX) :IN "/Users/tarvydas/quicklisp/dists/quicklisp/software/cl+ssl-20211230-git/src/context.lisp") 0 #.(SB-SYS:INT-SAP #X0AF96910))
+   source: (ERROR 'SSL-ERROR-VERIFY :ERROR-CODE ERROR-CODE)
+0]
+
+;;; drakma - appears to work
+
+;;;; LW
+Cl-USER 2 > (dex:get "https://planet.lisp.org")
+cl+ssl can not locate symbol "SSL_CTX_set_default_verify_file" in the module 'libssl
+cl+ssl can not locate symbol "SSL_CTX_set_default_verify_dir" in the module 'libssl
+cl+ssl can not locate symbol "SSLv3_method" in the module 'libssl
+cl+ssl can not locate symbol "SSLv3_server_method" in the module 'libssl
+cl+ssl can not locate symbol "SSLv3_client_method" in the module 'libssl
+cl+ssl can not locate symbol "OPENSSL_sk_num" in the module 'libcrypto
+cl+ssl can not locate symbol "OPENSSL_sk_value" in the module 'libcrypto
+cl+ssl can not locate symbol "SSL_CTX_set_default_verify_file" in the module 'libssl
+cl+ssl can not locate symbol "SSL_CTX_set_default_verify_dir" in the module 'libssl
+cl+ssl can not locate symbol "SSLv3_method" in the module 'libssl
+cl+ssl can not locate symbol "SSLv3_server_method" in the module 'libssl
+cl+ssl can not locate symbol "SSLv3_client_method" in the module 'libssl
+cl+ssl can not locate symbol "OPENSSL_sk_num" in the module 'libcrypto
+cl+ssl can not locate symbol "OPENSSL_sk_value" in the module 'libcrypto
+cl+ssl can not locate symbol "SSL_CTX_set_default_verify_file" in the module 'libssl
+cl+ssl can not locate symbol "SSL_CTX_set_default_verify_dir" in the module 'libssl
+cl+ssl can not locate symbol "SSLv3_method" in the module 'libssl
+cl+ssl can not locate symbol "SSLv3_server_method" in the module 'libssl
+cl+ssl can not locate symbol "SSLv3_client_method" in the module 'libssl
+cl+ssl can not locate symbol "OPENSSL_sk_num" in the module 'libcrypto
+cl+ssl can not locate symbol "OPENSSL_sk_value" in the module 'libcrypto
+
+Error: SSL verify error: 10 X509_V_ERR_CERT_HAS_EXPIRED
+  1 (continue) Retry the same request.
+  2 (abort) Return to top loop level 0.
+
+
+Type :b for backtrace or :c <option number> to proceed.
+Type :bug-form "<subject>" for a bug report template or :? for other options.
+
+CL-USER 3 : 1 > 
+
+;;;
+
+CL-USER 2 > (drakma:http-request "https://planet.lisp.org")
+
+Error: Could not register handle for external module COMM::OPENSSL-LIBRARY (file-name libssl.46):
+ dlopen(/Users/tarvydas/lib/libssl.46.dylib, 0x0005): tried: '/Users/tarvydas/lib/libssl.46.dylib' (no such file), '/System/Volumes/Preboot/Cryptexes/OS/Users/tarvydas/lib/libssl.46.dylib' (no such file), '/Users/tarvydas/lib/libssl.46.dylib' (no such file).
+  1 (abort) Return to top loop level 0.
+
+Type :b for backtrace or :c <option number> to proceed.
+Type :bug-form "<subject>" for a bug report template or :? for other options.
+
+CL-USER 3 : 1 > 
+
+
+;;;;;
+
+DEXADOR:
+
+SBCL:
+
+(dex:get "https://planet.lisp.org")
+debugger invoked on a CL+SSL:SSL-ERROR-VERIFY in thread
+...
+((LAMBDA (CL+SSL::OK CL+SSL::CTX) :IN "/Users/tarvydas/quicklisp/dists/quicklisp/software/cl+ssl-20211230-git/src/context.lisp") 0 #.(SB-SYS:INT-SAP #X0AF96910))
+   source: (ERROR 'SSL-ERROR-VERIFY :ERROR-CODE ERROR-CODE)
+...
+
+LW:
+
+Cl-USER 2 > (dex:get "https://planet.lisp.org")
+cl+ssl can not locate symbol "SSL_CTX_set_default_verify_file" in the module 'libssl
+... 20 more different "can not locate symbol" errors ...
+Error: SSL verify error: 10 X509_V_ERR_CERT_HAS_EXPIRED
+

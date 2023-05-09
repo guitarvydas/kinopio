@@ -1,0 +1,1 @@
+(map (lambda (x) (hash-ref x 'name)) (hash-ref (response-json (get "https://api.kinopio.club/space/TBn3RkhMIs7ksoX64sYWu"))) 'cards))
